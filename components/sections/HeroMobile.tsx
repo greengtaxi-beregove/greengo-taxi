@@ -13,7 +13,7 @@ export default function HeroMobile() {
   }, [open]);
 
   return (
-    <section className="lg:hidden relative min-h-[75vh] overflow-hidden">
+    <section className="lg:hidden relative min-h-[80vh] overflow-hidden">
 
       {/* ── Background ── */}
       <Image
