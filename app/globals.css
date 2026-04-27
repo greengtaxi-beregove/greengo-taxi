@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── TT Firs Neue ─── */
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-DemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TT Firs Neue";
+  src: url("/fonts/TTFirsNeue-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
 }
 
+/* ─── Brand tokens ─── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "TT Firs Neue", sans-serif;
+
+  --color-brand-green:       #6DB33F;
+  --color-brand-green-hover: #5A9A30;
+  --color-brand-green-light: #C8E6A0;
+  --color-brand-purple:      #5B5EA6;
+  --color-brand-purple-bg:   #7B72B8;
+  --color-brand-cream:       #F5F0E8;
+  --color-brand-white:       #FAFAF5;
+  --color-brand-black:       #1A1A1A;
+  --color-brand-red:         #E03030;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F5F0E8;
+  color: #1A1A1A;
+  font-family: "TT Firs Neue", sans-serif;
+  min-height: 100%;
 }
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  70%  { transform: scale(1.65); opacity: 0; }
+  100% { transform: scale(1.65); opacity: 0; }
+}
+
+@keyframes dot-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+@keyframes call-pulse {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  75%  { transform: scale(2.8); opacity: 0; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+.anim-call-1 { animation: call-pulse 2.1s ease-out infinite; }
+.anim-call-2 { animation: call-pulse 2.1s ease-out infinite 0.9s; }
+
+.anim-fade-up {
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.anim-delay-1 { animation-delay: 0.06s; }
+.anim-delay-2 { animation-delay: 0.14s; }
+.anim-delay-3 { animation-delay: 0.24s; }
+.anim-delay-4 { animation-delay: 0.36s; }
+.anim-delay-5 { animation-delay: 0.50s; }
+
+.anim-pulse-ring {
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+.anim-dot {
+  animation: dot-blink 1.8s ease-in-out infinite;
+}
+
+/* ─── Blob drift ─── */
+@keyframes blob-a {
+  0%, 100% { transform: translate(0px, 0px)   scale(1);    }
+  33%       { transform: translate(22px, -18px) scale(1.07); }
+  66%       { transform: translate(-12px, 14px) scale(0.94); }
+}
+@keyframes blob-b {
+  0%, 100% { transform: translate(0px, 0px)    scale(1);    }
+  40%       { transform: translate(-20px, 16px) scale(1.05); }
+  70%       { transform: translate(14px, -22px) scale(0.96); }
+}
+.anim-blob-a { animation: blob-a 18s ease-in-out infinite; }
+.anim-blob-b { animation: blob-b 22s ease-in-out infinite; }
+.anim-blob-c { animation: blob-a 28s ease-in-out infinite reverse; }
+
+input:focus { outline: none; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #C8C0B0; border-radius: 3px; }
