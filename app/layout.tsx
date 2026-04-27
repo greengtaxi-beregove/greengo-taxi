@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://greengo.taxi";
+const SITE_URL = "https://greengotaxi.com.ua";
 const SITE_NAME = "GreenGo Taxi";
 
 export const metadata: Metadata = {

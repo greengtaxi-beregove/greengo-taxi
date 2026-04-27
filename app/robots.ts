@@ -17,6 +17,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Bingbot",       allow: "/" },
       { userAgent: "CCBot",         disallow: "/" },
     ],
-    sitemap: "https://greengo.taxi/sitemap.xml",
+    sitemap: "https://greengotaxi.com.ua/sitemap.xml",
   };
 }
