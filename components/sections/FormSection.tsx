@@ -151,10 +151,10 @@ export default function FormSection() {
                   onChange={handle}
                   placeholder="Ваше ім'я"
                   autoComplete="name"
-                  onFocus={() => track.formStarted("mobile_section")}
                   className="w-full rounded-2xl px-4 py-[14px] text-[15px] font-medium text-white placeholder:text-white/35 outline-none transition-all duration-200"
                   style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.13)" }}
                   onFocus={e => {
+                    track.formStarted("mobile_section");
                     e.currentTarget.style.border = "1px solid rgba(255,255,255,0.36)";
                     e.currentTarget.style.boxShadow = "0 0 0 3px rgba(109,179,63,0.14)";
                   }}
