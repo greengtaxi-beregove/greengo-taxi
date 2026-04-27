@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { track } from "@/lib/analytics";
 
 export default function FormSection() {
   const ref = useRef<HTMLElement>(null);
@@ -33,6 +34,7 @@ export default function FormSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      track.formSubmitted("mobile_section");
     } finally {
       setLoading(false);
       setSent(true);
@@ -149,6 +151,7 @@ export default function FormSection() {
                   onChange={handle}
                   placeholder="Ваше ім'я"
                   autoComplete="name"
+                  onFocus={() => track.formStarted("mobile_section")}
                   className="w-full rounded-2xl px-4 py-[14px] text-[15px] font-medium text-white placeholder:text-white/35 outline-none transition-all duration-200"
                   style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.13)" }}
                   onFocus={e => {

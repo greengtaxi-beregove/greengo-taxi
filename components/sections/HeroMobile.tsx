@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, PHONE_HREF } from "@/lib/constants";
+import { track } from "@/lib/analytics";
 
 export default function HeroMobile() {
   const [open, setOpen] = useState(false);
@@ -38,7 +39,7 @@ export default function HeroMobile() {
 
         {/* Burger — bare lines */}
         <button
-          onClick={() => setOpen(true)}
+          onClick={() => { setOpen(true); track.menuOpened(); }}
           aria-label="Відкрити меню"
           className="flex flex-col items-end gap-[7px] p-2 active:opacity-60 transition-opacity duration-150"
         >

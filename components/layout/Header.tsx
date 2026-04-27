@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
+import { track } from "@/lib/analytics";
 
 export default function Header() {
   return (
@@ -37,6 +38,7 @@ export default function Header() {
 
         <a
           href={PHONE_HREF}
+          onClick={() => track.phoneCallClicked("header")}
           className="flex items-center gap-2 text-white rounded-full px-4 py-2 text-[13px] font-bold transition-all duration-200 active:scale-[0.97]"
           style={{
             background: "rgba(109,179,63,0.80)",

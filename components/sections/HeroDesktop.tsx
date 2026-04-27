@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ROUTES, PHONE_HREF, PHONE_NUMBER } from "@/lib/constants";
+import { track } from "@/lib/analytics";
 
 export default function HeroDesktop() {
   const [form, setForm] = useState({ name: "", phone: "" });
@@ -22,6 +23,7 @@ export default function HeroDesktop() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
+      track.formSubmitted("desktop_hero");
     } finally {
       setLoading(false);
       setSent(true);
@@ -208,6 +210,7 @@ export default function HeroDesktop() {
           <span className="text-[10px] font-semibold text-white/22 tracking-widest uppercase">або</span>
           <a
             href={PHONE_HREF}
+            onClick={() => track.phoneCallClicked("desktop_hero")}
             className="text-[13px] font-black text-white/55 hover:text-white transition-colors duration-200 tracking-tight"
           >
             {PHONE_NUMBER}
